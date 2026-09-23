@@ -158,7 +158,6 @@ export default async function WorkoutDetails({ params }) {
                 ))}
               </div>
             </div>
-
             {/* Actions */}
             <WorkoutActions workout={workout} />
           </div>
