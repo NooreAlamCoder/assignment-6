@@ -16,15 +16,15 @@ const MyPlanCard = ({ workout, onRemove, onDone, isSaved }) => {
       </div>
 
       <div className="min-w-0 flex-1">
-        <h3 className="truncate text-[10px] font-extrabold uppercase text-white">
+        <h3 className="truncate text-[11px] font-extrabold uppercase text-white">
           {workout.name}
         </h3>
 
-        <p className="mt-0.5 truncate text-[7px] text-[#858b96]">
+        <p className="mt-0.5 truncate text-[8px] text-[#858b96]">
           {workout.equipment}
         </p>
 
-        <div className="mt-1.5 flex items-center gap-2 text-[7px] text-[#858b96]">
+        <div className="mt-1.5 flex items-center gap-2 text-[8px] text-[#858b96]">
           <span>◷ {workout.duration} min</span>
           <span>● {workout.caloriesBurned} kcal</span>
           <span>★ {workout.rating}</span>
@@ -34,7 +34,7 @@ const MyPlanCard = ({ workout, onRemove, onDone, isSaved }) => {
       <div className="flex shrink-0 items-center gap-2">
         <Link
           href={`/workouts/${workout.id}`}
-          className="rounded-md border border-[#343941] px-3 py-1.5 text-[7px] font-medium text-white transition hover:border-[#555b66]"
+          className="rounded-md border border-[#343941] px-3 py-1.5 text-[12px] font-medium text-white transition hover:border-[#555b66]"
         >
           View Details
         </Link>
@@ -43,7 +43,7 @@ const MyPlanCard = ({ workout, onRemove, onDone, isSaved }) => {
           <button
             type="button"
             onClick={() => onDone(workout.id)}
-            className="rounded-md bg-[#ccff00] px-3 py-1.5 text-[7px] font-bold text-black transition hover:bg-[#d8ff33]"
+            className="rounded-md bg-[#ccff00] px-3 py-1.5 text-[12px] font-bold text-black transition hover:bg-[#d8ff33]"
           >
             ✓ Mark as Done
           </button>
@@ -52,7 +52,7 @@ const MyPlanCard = ({ workout, onRemove, onDone, isSaved }) => {
         <button
           type="button"
           onClick={() => onRemove(workout.id)}
-          className="px-1 text-[13px] leading-none text-[#858b96] transition hover:text-white"
+          className="px-1 text-[14px] leading-none text-[#858b96] transition hover:text-white"
           aria-label="Remove workout"
         >
           ×

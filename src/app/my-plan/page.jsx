@@ -76,7 +76,7 @@ const MyPlan = () => {
 
         <div className="mt-5 grid grid-cols-3 overflow-hidden rounded-lg border border-[#242830] bg-[#15181e]">
           <div className="border-r border-[#242830] px-3 py-4 md:px-4">
-            <p className="text-[6px] uppercase tracking-wide text-[#858b96]">
+            <p className="text-[10px] uppercase tracking-wide text-[#858b96]">
               Exercises
             </p>
 
@@ -86,7 +86,7 @@ const MyPlan = () => {
           </div>
 
           <div className="border-r border-[#242830] px-3 py-4 md:px-4">
-            <p className="text-[6px] uppercase tracking-wide text-[#858b96]">
+            <p className="text-[10px] uppercase tracking-wide text-[#858b96]">
               Minutes
             </p>
 
@@ -96,7 +96,7 @@ const MyPlan = () => {
           </div>
 
           <div className="px-3 py-4 md:px-4">
-            <p className="text-[6px] uppercase tracking-wide text-[#858b96]">
+            <p className="text-[10px] uppercase tracking-wide text-[#858b96]">
               Calories
             </p>
 
@@ -111,7 +111,7 @@ const MyPlan = () => {
             <button
               type="button"
               onClick={() => setActiveTab("plan")}
-              className={`rounded px-2.5 py-1.5 text-[7px] font-medium ${
+              className={`rounded px-2.5 py-1.5 text-[12px] font-medium ${
                 activeTab === "plan"
                   ? "bg-[#242830] text-white"
                   : "text-[#858b96]"
@@ -123,7 +123,7 @@ const MyPlan = () => {
             <button
               type="button"
               onClick={() => setActiveTab("saved")}
-              className={`rounded px-2.5 py-1.5 text-[7px] font-medium ${
+              className={`rounded px-2.5 py-1.5 text-[12px] font-medium ${
                 activeTab === "saved"
                   ? "bg-[#242830] text-white"
                   : "text-[#858b96]"
@@ -134,14 +134,14 @@ const MyPlan = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="text-[7px] text-[#858b96]">
+            <span className="text-[12px] text-[#858b96]">
               Sort By
             </span>
 
             <select
               value={sortBy}
               onChange={(event) => setSortBy(event.target.value)}
-              className="rounded-md border border-[#242830] bg-[#15181e] px-2 py-1.5 text-[7px] text-white outline-none"
+              className="rounded-md border border-[#242830] bg-[#15181e] px-2 py-1.5 text-[12px] text-white outline-none"
             >
               <option value="duration">Duration</option>
               <option value="calories">Calories</option>
@@ -153,11 +153,11 @@ const MyPlan = () => {
         <div className="mt-3 space-y-2">
           {sortedWorkouts.length === 0 ? (
             <div className="flex min-h-[250px] flex-col items-center justify-center rounded-lg border border-[#242830] bg-[#111419] px-5 text-center">
-              <h2 className="text-[14px] font-extrabold uppercase text-white">
+              <h2 className="text-[16px] font-extrabold uppercase text-white">
                 Nothing Here Yet
               </h2>
 
-              <p className="mt-2 max-w-[300px] text-[8px] leading-[1.6] text-[#858b96]">
+              <p className="mt-2 max-w-[300px] text-[10px] leading-[1.6] text-[#858b96]">
                 {activeTab === "plan"
                   ? "Add workouts to today's plan and they will appear here."
                   : "Save workouts for later and they will appear here."}
@@ -165,7 +165,7 @@ const MyPlan = () => {
 
               <Link
                 href="/#library"
-                className="mt-4 rounded-md bg-[#ccff00] px-3.5 py-2 text-[7px] font-bold uppercase text-black"
+                className="mt-4 rounded-md bg-[#ccff00] px-3.5 py-2 text-[10px] font-bold uppercase text-black"
               >
                 Go to workouts
               </Link>
