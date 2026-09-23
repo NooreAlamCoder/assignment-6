@@ -1,11 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useFitLog } from "@/context/FitLogContext";
 
 export default function Navbar() {
+  const { plan, saved } = useFitLog();
+
   return (
     <header className="border-b border-[#20242b] bg-[#0b0d0f]">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 md:px-8">
-        
+
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -44,14 +49,14 @@ export default function Navbar() {
             href="/my-plan"
             className="rounded-full bg-[#ccff00] px-3 py-1.5 text-[10px] font-bold text-black"
           >
-            Plan 0
+            Plan {plan.length}
           </Link>
 
           <Link
             href="/my-plan"
             className="rounded-full border border-[#343941] px-3 py-1.5 text-[10px] font-medium text-white"
           >
-            Saved 0
+            Saved {saved.length}
           </Link>
         </div>
 

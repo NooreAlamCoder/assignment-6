@@ -1,4 +1,5 @@
 import Image from "next/image";
+import WorkoutActions from "@/components/WorkoutActions";
 
 const getWorkout = async (id) => {
   const rec = await fetch(
@@ -19,8 +20,8 @@ export default async function WorkoutDetails({ params }) {
     <main className="min-h-screen bg-[#0b0d0f]">
       <section className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
-          
-          {/* Left - Image */}
+
+          {/* Workout Image */}
           <div className="overflow-hidden rounded-xl border border-[#242830] bg-[#111419]">
             <Image
               src={workout.image}
@@ -32,8 +33,9 @@ export default async function WorkoutDetails({ params }) {
             />
           </div>
 
-          {/* Right - Details */}
+          {/* Workout Details */}
           <div>
+
             {/* Title */}
             <h1 className="text-[30px] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-white md:text-[36px]">
               {workout.name}
@@ -56,14 +58,15 @@ export default async function WorkoutDetails({ params }) {
               ))}
             </div>
 
-            {/* Specs */}
+            {/* Workout Specs */}
             <div className="mt-5 overflow-hidden rounded-xl border border-[#242830] bg-[#15181e]">
-              
+
               <div className="grid grid-cols-2 border-b border-[#242830]">
                 <div className="border-r border-[#242830] px-3 py-3">
                   <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
                     Equipment
                   </p>
+
                   <p className="mt-1 text-[9px] font-medium text-white">
                     {workout.equipment}
                   </p>
@@ -73,6 +76,7 @@ export default async function WorkoutDetails({ params }) {
                   <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
                     Difficulty
                   </p>
+
                   <p className="mt-1 text-[9px] font-medium text-white">
                     {workout.difficulty}
                   </p>
@@ -84,6 +88,7 @@ export default async function WorkoutDetails({ params }) {
                   <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
                     Sets
                   </p>
+
                   <p className="mt-1 text-[9px] font-medium text-white">
                     {workout.sets}
                   </p>
@@ -93,6 +98,7 @@ export default async function WorkoutDetails({ params }) {
                   <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
                     Reps
                   </p>
+
                   <p className="mt-1 text-[9px] font-medium text-white">
                     {workout.reps}
                   </p>
@@ -104,6 +110,7 @@ export default async function WorkoutDetails({ params }) {
                   <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
                     Duration
                   </p>
+
                   <p className="mt-1 text-[9px] font-medium text-white">
                     {workout.duration} min
                   </p>
@@ -113,6 +120,7 @@ export default async function WorkoutDetails({ params }) {
                   <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
                     Calories
                   </p>
+
                   <p className="mt-1 text-[9px] font-medium text-white">
                     {workout.caloriesBurned} kcal
                   </p>
@@ -122,6 +130,7 @@ export default async function WorkoutDetails({ params }) {
                   <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
                     Rating
                   </p>
+
                   <p className="mt-1 text-[9px] font-medium text-white">
                     {workout.rating}
                   </p>
@@ -153,22 +162,9 @@ export default async function WorkoutDetails({ params }) {
               </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="mt-6 flex flex-wrap gap-2">
-              <button
-                type="button"
-                className="rounded-md bg-[#ccff00] px-4 py-2.5 text-[8px] font-bold uppercase tracking-wide text-black transition hover:bg-[#d8ff33]"
-              >
-                + Add to today's plan
-              </button>
+            {/* Workout Actions */}
+            <WorkoutActions workout={workout} />
 
-              <button
-                type="button"
-                className="rounded-md border border-[#343941] px-4 py-2.5 text-[8px] font-bold uppercase tracking-wide text-white transition hover:border-[#555b66]"
-              >
-                ♡ Save for later
-              </button>
-            </div>
           </div>
         </div>
       </section>
