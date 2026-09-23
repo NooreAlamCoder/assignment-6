@@ -4,26 +4,42 @@ import React from "react";
 import { useFitLog } from "@/context/FitLogContext";
 
 const WorkoutActions = ({ workout }) => {
-  const { plan, saved, setPlan, setSaved } = useFitLog();
+  const {
+    plan,
+    saved,
+    setPlan,
+    setSaved,
+    showToast,
+  } = useFitLog();
 
   const handleAddToPlan = () => {
-    const alreadyAdded = plan.some((item) => item.id === workout.id);
+    const alreadyAdded = plan.some(
+      (item) => item.id === workout.id
+    );
 
     if (alreadyAdded) {
+      showToast("Workout is already in today's plan");
       return;
     }
 
     setPlan([...plan, workout]);
+
+    showToast("Workout added to today's plan");
   };
 
   const handleSaveForLater = () => {
-    const alreadySaved = saved.some((item) => item.id === workout.id);
+    const alreadySaved = saved.some(
+      (item) => item.id === workout.id
+    );
 
     if (alreadySaved) {
+      showToast("Workout is already saved");
       return;
     }
 
     setSaved([...saved, workout]);
+
+    showToast("Workout saved for later");
   };
 
   return (

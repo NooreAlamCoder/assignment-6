@@ -7,11 +7,12 @@ import { useFitLog } from "@/context/FitLogContext";
 
 const MyPlan = () => {
   const {
-    plan,
-    saved,
-    setPlan,
-    setSaved,
-  } = useFitLog();
+  plan,
+  saved,
+  setPlan,
+  setSaved,
+  showToast,
+} = useFitLog();
 
   const [activeTab, setActiveTab] = useState("plan");
   const [sortBy, setSortBy] = useState("duration");
@@ -54,17 +55,20 @@ const MyPlan = () => {
 
   // Remove workout
   const handleRemove = (id) => {
-    if (activeTab === "plan") {
-      setPlan(plan.filter((workout) => workout.id !== id));
-    } else {
-      setSaved(saved.filter((workout) => workout.id !== id));
-    }
-  };
+  if (activeTab === "plan") {
+    setPlan(plan.filter((workout) => workout.id !== id));
+    showToast("Workout removed from today's plan");
+  } else {
+    setSaved(saved.filter((workout) => workout.id !== id));
+    showToast("Workout removed from saved");
+  }
+};
 
   // Mark as done
   const handleDone = (id) => {
-    setPlan(plan.filter((workout) => workout.id !== id));
-  };
+  setPlan(plan.filter((workout) => workout.id !== id));
+  showToast("Workout marked as done");
+};
 
   return (
     <main className="min-h-screen bg-[#0b0d0f]">
