@@ -19,7 +19,7 @@ export default function Hero() {
             </h1>
 
             <p className="mt-4 max-w-[390px] text-[10px] leading-[1.6] text-[#858b96] sm:text-[11px]">
-              FitLog is a dark, no-nonsense gym companion: pick a lift, lock it
+              FitLog is a dark, no-nonsense gym companion: pick a lift, lock it <br />
               into today's plan, and watch the week's work add up.
             </p>
 
@@ -28,7 +28,7 @@ export default function Hero() {
               className="mt-6 inline-flex items-center gap-2 rounded-md bg-[#ccff00] px-4 py-2.5 text-[10px] font-bold uppercase tracking-wide text-black transition hover:bg-[#d8ff33]"
             >
               Browse Workouts
-              <span aria-hidden="true">→</span>
+              <span aria-hidden="true"></span>
             </Link>
           </div>
 
