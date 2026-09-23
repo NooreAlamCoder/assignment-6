@@ -1,0 +1,29 @@
+import Image from "next/image";
+import Link from "next/link";
+
+export default function Footer() {
+  return (
+    <footer className="border-t border-[#20242b]">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 md:px-6 lg:px-8">
+        
+        <Link href="/" className="flex items-center gap-1.5">
+          <Image
+            src="/assets/logo.png"
+            alt="FitLog"
+            width={18}
+            height={18}
+          />
+
+          <span className="text-[8px] font-bold tracking-wide text-white">
+            FITLOG
+          </span>
+        </Link>
+
+        <p className="text-[7px] text-[#555b66]">
+          © 2026 FitLog — Workout Library. Train hard, log honest.
+        </p>
+
+      </div>
+    </footer>
+  );
+}
