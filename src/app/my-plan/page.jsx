@@ -2,17 +2,17 @@
 
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 import MyPlanCard from "@/components/MyPlanCard";
 import { useFitLog } from "@/context/FitLogContext";
 
 const MyPlan = () => {
   const {
-  plan,
-  saved,
-  setPlan,
-  setSaved,
-  showToast,
-} = useFitLog();
+    plan,
+    saved,
+    setPlan,
+    setSaved,
+  } = useFitLog();
 
   const [activeTab, setActiveTab] = useState("plan");
   const [sortBy, setSortBy] = useState("duration");
@@ -55,20 +55,23 @@ const MyPlan = () => {
 
   // Remove workout
   const handleRemove = (id) => {
-  if (activeTab === "plan") {
-    setPlan(plan.filter((workout) => workout.id !== id));
-    showToast("Workout removed from today's plan");
-  } else {
-    setSaved(saved.filter((workout) => workout.id !== id));
-    showToast("Workout removed from saved");
-  }
-};
+    if (activeTab === "plan") {
+      setPlan(plan.filter((workout) => workout.id !== id));
+
+      toast.success("Workout removed from today's plan");
+    } else {
+      setSaved(saved.filter((workout) => workout.id !== id));
+
+      toast.success("Workout removed from saved");
+    }
+  };
 
   // Mark as done
   const handleDone = (id) => {
-  setPlan(plan.filter((workout) => workout.id !== id));
-  showToast("Workout marked as done");
-};
+    setPlan(plan.filter((workout) => workout.id !== id));
+
+    toast.success("Workout marked as done");
+  };
 
   return (
     <main className="min-h-screen bg-[#0b0d0f]">
@@ -88,6 +91,7 @@ const MyPlan = () => {
         {/* Metrics */}
         <div className="mt-5 grid grid-cols-3 overflow-hidden rounded-lg border border-[#242830] bg-[#15181e]">
 
+          {/* Exercises */}
           <div className="border-r border-[#242830] px-3 py-4 md:px-4">
             <p className="text-[6px] uppercase tracking-wide text-[#858b96]">
               Exercises
@@ -98,6 +102,7 @@ const MyPlan = () => {
             </p>
           </div>
 
+          {/* Minutes */}
           <div className="border-r border-[#242830] px-3 py-4 md:px-4">
             <p className="text-[6px] uppercase tracking-wide text-[#858b96]">
               Minutes
@@ -108,6 +113,7 @@ const MyPlan = () => {
             </p>
           </div>
 
+          {/* Calories */}
           <div className="px-3 py-4 md:px-4">
             <p className="text-[6px] uppercase tracking-wide text-[#858b96]">
               Calories
@@ -121,10 +127,10 @@ const MyPlan = () => {
         </div>
 
         {/* Tabs + Sort */}
-        <div className="mt-5 flex items-center justify-between">
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
 
           {/* Tabs */}
-          <div className="flex rounded-md border border-[#242830] bg-[#15181e] p-0.5">
+          <div className="flex w-fit rounded-md border border-[#242830] bg-[#15181e] p-0.5">
 
             <button
               type="button"
@@ -183,7 +189,7 @@ const MyPlan = () => {
         <div className="mt-3 space-y-2">
 
           {sortedWorkouts.length === 0 ? (
-            <div className="flex min-h-[250px] flex-col items-center justify-center rounded-lg border border-[#242830] bg-[#111419] text-center">
+            <div className="flex min-h-[250px] flex-col items-center justify-center rounded-lg border border-[#242830] bg-[#111419] px-5 text-center">
 
               <h2 className="text-[14px] font-extrabold uppercase text-white">
                 Nothing Here Yet

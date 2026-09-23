@@ -1,17 +1,12 @@
 "use client";
 
-import React, {
-  createContext,
-  useContext,
-  useState,
-} from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const FitLogContext = createContext();
 
 const FitLogContextProvider = ({ children }) => {
   const [plan, setPlan] = useState([]);
   const [saved, setSaved] = useState([]);
-
   const [toast, setToast] = useState("");
 
   const showToast = (message) => {

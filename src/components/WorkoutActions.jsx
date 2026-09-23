@@ -1,45 +1,39 @@
 "use client";
 
 import React from "react";
+import { toast } from "react-toastify";
 import { useFitLog } from "@/context/FitLogContext";
 
 const WorkoutActions = ({ workout }) => {
-  const {
-    plan,
-    saved,
-    setPlan,
-    setSaved,
-    showToast,
-  } = useFitLog();
+  const { plan, saved, setPlan, setSaved } = useFitLog();
 
   const handleAddToPlan = () => {
-    const alreadyAdded = plan.some(
-      (item) => item.id === workout.id
-    );
+    const alreadyAdded = plan.some((item) => item.id === workout.id);
 
     if (alreadyAdded) {
-      showToast("Workout is already in today's plan");
+      toast.info("Workout is already in today's plan");
+      return;
+    }
+
+    if (plan.length >= 5) {
+      toast.warning("Today's plan can contain maximum 5 workouts");
       return;
     }
 
     setPlan([...plan, workout]);
-
-    showToast("Workout added to today's plan");
+    toast.success("Workout added to today's plan");
   };
 
   const handleSaveForLater = () => {
-    const alreadySaved = saved.some(
-      (item) => item.id === workout.id
-    );
+    const alreadySaved = saved.some((item) => item.id === workout.id);
 
     if (alreadySaved) {
-      showToast("Workout is already saved");
+      toast.info("Workout is already saved");
       return;
     }
 
     setSaved([...saved, workout]);
-
-    showToast("Workout saved for later");
+    toast.success("Workout saved for later");
   };
 
   return (
