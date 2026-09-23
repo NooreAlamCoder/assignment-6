@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const MyPlanCard = ({ workout, onRemove, onDone }) => {
+const MyPlanCard = ({ workout, onRemove, onDone, isSaved }) => {
   return (
     <div className="flex items-center gap-3 rounded-lg border border-[#242830] bg-[#15181e] p-2.5">
       <div className="relative h-[58px] w-[82px] shrink-0 overflow-hidden rounded-md bg-[#111419]">
@@ -31,7 +31,7 @@ const MyPlanCard = ({ workout, onRemove, onDone }) => {
         </div>
       </div>
 
-      <div className="flex shrink-0 items-center gap-1.5">
+      <div className="flex shrink-0 items-center gap-2">
         <Link
           href={`/workouts/${workout.id}`}
           className="rounded-md border border-[#343941] px-3 py-1.5 text-[7px] font-medium text-white transition hover:border-[#555b66]"
@@ -39,20 +39,23 @@ const MyPlanCard = ({ workout, onRemove, onDone }) => {
           View Details
         </Link>
 
-        <button
-          type="button"
-          onClick={() => onDone(workout.id)}
-          className="rounded-md bg-[#ccff00] px-3 py-1.5 text-[7px] font-bold text-black transition hover:bg-[#d8ff33]"
-        >
-          ✓ Mark as Done
-        </button>
+        {!isSaved && (
+          <button
+            type="button"
+            onClick={() => onDone(workout.id)}
+            className="rounded-md bg-[#ccff00] px-3 py-1.5 text-[7px] font-bold text-black transition hover:bg-[#d8ff33]"
+          >
+            ✓ Mark as Done
+          </button>
+        )}
 
         <button
           type="button"
           onClick={() => onRemove(workout.id)}
-          className="rounded-md border border-[#343941] px-3 py-1.5 text-[7px] font-medium text-[#858b96] transition hover:border-[#555b66] hover:text-white"
+          className="px-1 text-[13px] leading-none text-[#858b96] transition hover:text-white"
+          aria-label="Remove workout"
         >
-          Remove
+          ×
         </button>
       </div>
     </div>

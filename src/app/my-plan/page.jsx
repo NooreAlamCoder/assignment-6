@@ -7,19 +7,13 @@ import MyPlanCard from "@/components/MyPlanCard";
 import { useFitLog } from "@/context/FitLogContext";
 
 const MyPlan = () => {
-  const {
-    plan,
-    saved,
-    setPlan,
-    setSaved,
-  } = useFitLog();
+  const { plan, saved, setPlan, setSaved } = useFitLog();
 
   const [activeTab, setActiveTab] = useState("plan");
   const [sortBy, setSortBy] = useState("duration");
 
   const activeWorkouts = activeTab === "plan" ? plan : saved;
 
-  // Sort workouts
   const sortedWorkouts = useMemo(() => {
     const workouts = [...activeWorkouts];
 
@@ -40,7 +34,6 @@ const MyPlan = () => {
     return workouts;
   }, [activeWorkouts, sortBy]);
 
-  // Dynamic metrics
   const totalExercises = activeWorkouts.length;
 
   const totalMinutes = activeWorkouts.reduce(
@@ -53,31 +46,24 @@ const MyPlan = () => {
     0
   );
 
-  // Remove workout
   const handleRemove = (id) => {
     if (activeTab === "plan") {
       setPlan(plan.filter((workout) => workout.id !== id));
-
       toast.success("Workout removed from today's plan");
     } else {
       setSaved(saved.filter((workout) => workout.id !== id));
-
       toast.success("Workout removed from saved");
     }
   };
 
-  // Mark as done
   const handleDone = (id) => {
     setPlan(plan.filter((workout) => workout.id !== id));
-
     toast.success("Workout marked as done");
   };
 
   return (
     <main className="min-h-screen bg-[#0b0d0f]">
       <section className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-8">
-
-        {/* Header */}
         <div>
           <h1 className="text-[17px] font-extrabold uppercase tracking-tight text-white md:text-[20px]">
             My Plan
@@ -88,10 +74,7 @@ const MyPlan = () => {
           </p>
         </div>
 
-        {/* Metrics */}
         <div className="mt-5 grid grid-cols-3 overflow-hidden rounded-lg border border-[#242830] bg-[#15181e]">
-
-          {/* Exercises */}
           <div className="border-r border-[#242830] px-3 py-4 md:px-4">
             <p className="text-[6px] uppercase tracking-wide text-[#858b96]">
               Exercises
@@ -102,7 +85,6 @@ const MyPlan = () => {
             </p>
           </div>
 
-          {/* Minutes */}
           <div className="border-r border-[#242830] px-3 py-4 md:px-4">
             <p className="text-[6px] uppercase tracking-wide text-[#858b96]">
               Minutes
@@ -113,7 +95,6 @@ const MyPlan = () => {
             </p>
           </div>
 
-          {/* Calories */}
           <div className="px-3 py-4 md:px-4">
             <p className="text-[6px] uppercase tracking-wide text-[#858b96]">
               Calories
@@ -123,15 +104,10 @@ const MyPlan = () => {
               {totalCalories}
             </p>
           </div>
-
         </div>
 
-        {/* Tabs + Sort */}
         <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-
-          {/* Tabs */}
           <div className="flex w-fit rounded-md border border-[#242830] bg-[#15181e] p-0.5">
-
             <button
               type="button"
               onClick={() => setActiveTab("plan")}
@@ -155,10 +131,8 @@ const MyPlan = () => {
             >
               Saved
             </button>
-
           </div>
 
-          {/* Sort */}
           <div className="flex items-center gap-2">
             <span className="text-[7px] text-[#858b96]">
               Sort By
@@ -169,28 +143,16 @@ const MyPlan = () => {
               onChange={(event) => setSortBy(event.target.value)}
               className="rounded-md border border-[#242830] bg-[#15181e] px-2 py-1.5 text-[7px] text-white outline-none"
             >
-              <option value="duration">
-                Duration
-              </option>
-
-              <option value="calories">
-                Calories
-              </option>
-
-              <option value="rating">
-                Rating
-              </option>
+              <option value="duration">Duration</option>
+              <option value="calories">Calories</option>
+              <option value="rating">Rating</option>
             </select>
           </div>
-
         </div>
 
-        {/* Workout List */}
         <div className="mt-3 space-y-2">
-
           {sortedWorkouts.length === 0 ? (
             <div className="flex min-h-[250px] flex-col items-center justify-center rounded-lg border border-[#242830] bg-[#111419] px-5 text-center">
-
               <h2 className="text-[14px] font-extrabold uppercase text-white">
                 Nothing Here Yet
               </h2>
@@ -207,7 +169,6 @@ const MyPlan = () => {
               >
                 Go to workouts
               </Link>
-
             </div>
           ) : (
             sortedWorkouts.map((workout) => (
@@ -216,12 +177,11 @@ const MyPlan = () => {
                 workout={workout}
                 onRemove={handleRemove}
                 onDone={handleDone}
+                isSaved={activeTab === "saved"}
               />
             ))
           )}
-
         </div>
-
       </section>
     </main>
   );
