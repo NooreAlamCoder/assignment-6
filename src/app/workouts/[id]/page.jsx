@@ -13,41 +13,38 @@ const getWorkout = async (id) => {
 
 export default async function WorkoutDetails({ params }) {
   const { id } = await params;
-
   const workout = await getWorkout(id);
 
   return (
     <main className="min-h-screen bg-[#0b0d0f]">
-      <section className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-start">
-
+      <section className="mx-auto max-w-4xl px-4 py-5 md:px-5">
+        <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
           {/* Workout Image */}
-          <div className="overflow-hidden rounded-xl border border-[#242830] bg-[#111419]">
+          <div className="overflow-hidden rounded-lg border border-[#242830] bg-[#111419]">
             <Image
               src={workout.image}
               alt={workout.name}
               width={700}
-              height={700}
+              height={875}
               priority
-              className="aspect-square w-full object-cover"
+              className="aspect-[4/5] w-full object-cover"
             />
           </div>
 
-          {/* Workout Details */}
-          <div>
-
+          {/* Workout Content */}
+          <div className="pt-0.5">
             {/* Title */}
-            <h1 className="text-[30px] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-white md:text-[36px]">
+            <h1 className="text-[20px] font-extrabold uppercase leading-[1.05] tracking-[-0.02em] text-white">
               {workout.name}
             </h1>
 
             {/* Description */}
-            <p className="mt-3 max-w-[520px] text-[10px] leading-[1.7] text-[#858b96]">
+            <p className="mt-2 max-w-[500px] text-[9px] leading-[1.6] text-[#858b96]">
               {workout.description}
             </p>
 
             {/* Muscle Groups */}
-            <div className="mt-4 flex flex-wrap gap-1.5">
+            <div className="mt-3 flex flex-wrap gap-1.5">
               {workout.muscleGroups?.map((muscle) => (
                 <span
                   key={muscle}
@@ -59,87 +56,87 @@ export default async function WorkoutDetails({ params }) {
             </div>
 
             {/* Workout Specs */}
-            <div className="mt-5 overflow-hidden rounded-xl border border-[#242830] bg-[#15181e]">
+            <div className="mt-4 overflow-hidden rounded-lg border border-[#242830] bg-[#15181e]">
+              {/* Equipment */}
+              <div className="flex items-center justify-between border-b border-[#242830] px-3.5 py-3">
+                <p className="text-[7px] font-medium uppercase tracking-wide text-[#858b96]">
+                  Equipment
+                </p>
 
-              <div className="grid grid-cols-2 border-b border-[#242830]">
-                <div className="border-r border-[#242830] px-3 py-3">
-                  <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
-                    Equipment
-                  </p>
-
-                  <p className="mt-1 text-[9px] font-medium text-white">
-                    {workout.equipment}
-                  </p>
-                </div>
-
-                <div className="px-3 py-3">
-                  <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
-                    Difficulty
-                  </p>
-
-                  <p className="mt-1 text-[9px] font-medium text-white">
-                    {workout.difficulty}
-                  </p>
-                </div>
+                <p className="text-[9px] font-medium text-white">
+                  {workout.equipment}
+                </p>
               </div>
 
-              <div className="grid grid-cols-2 border-b border-[#242830]">
-                <div className="border-r border-[#242830] px-3 py-3">
-                  <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
-                    Sets
-                  </p>
+              {/* Difficulty */}
+              <div className="flex items-center justify-between border-b border-[#242830] px-3.5 py-3">
+                <p className="text-[7px] font-medium uppercase tracking-wide text-[#858b96]">
+                  Difficulty
+                </p>
 
-                  <p className="mt-1 text-[9px] font-medium text-white">
-                    {workout.sets}
-                  </p>
-                </div>
-
-                <div className="px-3 py-3">
-                  <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
-                    Reps
-                  </p>
-
-                  <p className="mt-1 text-[9px] font-medium text-white">
-                    {workout.reps}
-                  </p>
-                </div>
+                <p className="text-[9px] font-medium text-white">
+                  {workout.difficulty}
+                </p>
               </div>
 
-              <div className="grid grid-cols-3">
-                <div className="border-r border-[#242830] px-3 py-3">
-                  <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
-                    Duration
-                  </p>
+              {/* Sets */}
+              <div className="flex items-center justify-between border-b border-[#242830] px-3.5 py-3">
+                <p className="text-[7px] font-medium uppercase tracking-wide text-[#858b96]">
+                  Sets
+                </p>
 
-                  <p className="mt-1 text-[9px] font-medium text-white">
-                    {workout.duration} min
-                  </p>
-                </div>
+                <p className="text-[9px] font-medium text-white">
+                  {workout.sets}
+                </p>
+              </div>
 
-                <div className="border-r border-[#242830] px-3 py-3">
-                  <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
-                    Calories
-                  </p>
+              {/* Reps */}
+              <div className="flex items-center justify-between border-b border-[#242830] px-3.5 py-3">
+                <p className="text-[7px] font-medium uppercase tracking-wide text-[#858b96]">
+                  Reps
+                </p>
 
-                  <p className="mt-1 text-[9px] font-medium text-white">
-                    {workout.caloriesBurned} kcal
-                  </p>
-                </div>
+                <p className="text-[9px] font-medium text-white">
+                  {workout.reps}
+                </p>
+              </div>
 
-                <div className="px-3 py-3">
-                  <p className="text-[7px] uppercase tracking-wide text-[#858b96]">
-                    Rating
-                  </p>
+              {/* Duration */}
+              <div className="flex items-center justify-between border-b border-[#242830] px-3.5 py-3">
+                <p className="text-[7px] font-medium uppercase tracking-wide text-[#858b96]">
+                  Duration
+                </p>
 
-                  <p className="mt-1 text-[9px] font-medium text-white">
-                    {workout.rating}
-                  </p>
-                </div>
+                <p className="text-[9px] font-medium text-white">
+                  {workout.duration} min
+                </p>
+              </div>
+
+              {/* Calories */}
+              <div className="flex items-center justify-between border-b border-[#242830] px-3.5 py-3">
+                <p className="text-[7px] font-medium uppercase tracking-wide text-[#858b96]">
+                  Calories
+                </p>
+
+                <p className="text-[9px] font-medium text-white">
+                  {workout.caloriesBurned} kcal
+                </p>
+              </div>
+
+              {/* Rating */}
+              <div className="flex items-center justify-between px-3.5 py-3">
+                <p className="text-[7px] font-medium uppercase tracking-wide text-[#858b96]">
+                  Rating
+                </p>
+
+                <p className="text-[9px] font-medium text-white">
+                  {workout.rating}
+                </p>
               </div>
             </div>
 
             {/* Instructions */}
-            <div className="mt-6">
+            <div className="mt-5">
               <h2 className="text-[10px] font-bold uppercase tracking-wide text-white">
                 Instructions
               </h2>
@@ -148,13 +145,13 @@ export default async function WorkoutDetails({ params }) {
                 {workout.instructions?.map((instruction, index) => (
                   <div
                     key={index}
-                    className="flex gap-3"
+                    className="flex items-start gap-2.5"
                   >
                     <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#343941] text-[7px] font-bold text-[#858b96]">
                       {index + 1}
                     </span>
 
-                    <p className="pt-0.5 text-[9px] leading-[1.6] text-[#858b96]">
+                    <p className="pt-0.5 text-[8px] leading-[1.6] text-[#858b96]">
                       {instruction}
                     </p>
                   </div>
@@ -162,9 +159,8 @@ export default async function WorkoutDetails({ params }) {
               </div>
             </div>
 
-            {/* Workout Actions */}
+            {/* Actions */}
             <WorkoutActions workout={workout} />
-
           </div>
         </div>
       </section>
