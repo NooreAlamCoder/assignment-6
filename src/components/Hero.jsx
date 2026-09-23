@@ -6,7 +6,6 @@ export default function Hero() {
     <section className="mx-auto max-w-7xl px-4 pt-8 md:px-6 lg:px-8">
       <div className="relative overflow-hidden rounded-lg border border-[#20242b] bg-[#15181e]">
         <div className="grid min-h-[300px] grid-cols-1 items-center md:grid-cols-[1.1fr_0.9fr]">
-          
           {/* Hero Content */}
           <div className="relative z-10 px-8 py-25 sm:px-10 md:px-12 ">
             <p className="mb-3 text-[9px] font-bold uppercase tracking-[0.15em] text-[#ccff00]">
@@ -19,7 +18,8 @@ export default function Hero() {
             </h1>
 
             <p className="mt-4 max-w-[390px] text-[10px] leading-[1.6] text-[#858b96] sm:text-[11px]">
-              FitLog is a dark, no-nonsense gym companion: pick a lift, lock it <br />
+              FitLog is a dark, no-nonsense gym companion: pick a lift, lock it{" "}
+              <br />
               into today's plan, and watch the week's work add up.
             </p>
 
@@ -43,7 +43,6 @@ export default function Hero() {
               className="h-auto w-[230px] object-contain sm:w-[270px] md:w-[300px]"
             />
           </div>
-
         </div>
       </div>
     </section>

@@ -53,6 +53,7 @@ export default function Navbar() {
           </Link>
         </nav>
 
+
         <div className="flex items-center gap-2">
           <Link
             href="/my-plan"
